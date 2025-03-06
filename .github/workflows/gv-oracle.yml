@@ -22,5 +22,12 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.20.14
+    - name: Check for stdint.h
+      run: |
+        find /usr/include -name "stdint.h"
+        echo "Using GCC version:"
+        gcc --version
+        echo "Using G++ version:"
+        g++ --version
     - name: System Test
       run: tests/unittest3/testall.sh
