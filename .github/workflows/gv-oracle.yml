@@ -31,5 +31,6 @@ jobs:
         g++ --version
         echo | g++ -E -x c++ - -include cstdint | grep uint32_t
         echo | gcc -E -x c++ -v -
+        ls -l /usr/include/stdint.h
     - name: System Test
       run: tests/unittest3/testall.sh
