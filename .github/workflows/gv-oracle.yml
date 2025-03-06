@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 jobs:
   odbTest:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     services:
       odb3:
@@ -22,15 +22,5 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.20.14
-    - name: Check for stdint.h
-      run: |
-        find /usr/include -name "stdint.h"
-        echo "Using GCC version:"
-        gcc --version
-        echo "Using G++ version:"
-        g++ --version
-        echo | g++ -E -x c++ - -include cstdint | grep uint32_t
-        echo | gcc -E -x c++ -v -
-        ls -l /usr/include/stdint.h
     - name: System Test
       run: tests/unittest3/testall.sh
