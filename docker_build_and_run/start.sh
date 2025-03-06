@@ -56,7 +56,8 @@ if [ "$HERA_RUN_WITH_MOCK" = true ] ; then
 else
   docker-compose -f MySqlHeraBox.yaml up -d --remove-orphans
 fi
-
+echo "Running docker ps ..."
+docker ps
 echo "Running initial set of queries ..."
 case "${unameOut}" in
     MING*)    winpty docker exec -it hera_mysql mysql -u root -p$HERA_DB_ROOT_PASSWORD  -e "Use $HERA_DB_SCHEMA; $(cat ./initialize.sql)";;
