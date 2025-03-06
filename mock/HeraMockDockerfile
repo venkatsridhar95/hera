@@ -22,6 +22,7 @@ FROM redislabs/redistimeseries AS redistimeseries
 FROM ${BASE_IMAGE}
 ARG BASE_IMAGE
 # prepare the image with required software
+RUN rm -rf /var/lib/apt/lists/* && apt-get clean
 RUN apt update
 RUN apt install python3 -y
 RUN apt install curl -y
